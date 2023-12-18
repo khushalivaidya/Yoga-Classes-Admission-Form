@@ -4,6 +4,9 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import { connectDB } from "./DB/Database.js";
+import otpRouter from "./router/otp-router.js";
+import feeRecordRouter from "./router/feeRecord-router.js";
 
 dotenv.config({ path: "./config/config.env" });
 const app = express();
@@ -30,6 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (request, response) => {
     response.send("Hello World!");
 });
+
+app.use("api/otp", otpRouter);
+app.use("api/feesRecord", feeRecordRouter);
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
