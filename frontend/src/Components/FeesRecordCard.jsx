@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import React, { useMemo } from "react";
+import React from "react";
 
 const FeesRecordCard = ({ email, fetchedRecordData }) => {
     const getMonth = [
@@ -22,22 +22,29 @@ const FeesRecordCard = ({ email, fetchedRecordData }) => {
         <div className="container">
             <Grid container textAlign={"left"}>
                 <Grid item xs={12}>
-                    <h3>Email: {email}</h3>
+                    <h1>Your Payment Record</h1>
                 </Grid>
                 <Grid item xs={12}>
-                    <h3>Name: {fetchedRecordData.name}</h3>
-                </Grid>
-                <Grid item xs={6}>
-                    <h3>
-                        Payment valid upto month:{" "}
-                        {getMonth[fetchedRecordData.paymentMonth]}
-                    </h3>
-                </Grid>
-                <Grid item xs={6}>
-                    <h3>Age: {fetchedRecordData.age}</h3>
+                    <span>
+                        <p>Email: </p>
+                        <h3>{email}</h3>
+                    </span>
                 </Grid>
                 <Grid item xs={12}>
-                    <h3>BatchNo. {getBatch[fetchedRecordData.batch]}</h3>
+                    <p>Name: </p>
+                    <h3>{fetchedRecordData.name}</h3>
+                </Grid>
+                <Grid item xs={6}>
+                    <p>Payment valid upto month: </p>
+                    <h3>{getMonth[fetchedRecordData.paymentMonth]}</h3>
+                </Grid>
+                <Grid item xs={6}>
+                    <p>Age: </p>
+                    <h3>{fetchedRecordData.age}</h3>
+                </Grid>
+                <Grid item xs={12}>
+                    <p>BatchNo. </p>
+                    <h3>{getBatch[fetchedRecordData.batch]}</h3>
                 </Grid>
             </Grid>
         </div>

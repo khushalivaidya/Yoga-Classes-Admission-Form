@@ -1,11 +1,4 @@
-import {
-    Box,
-    Button,
-    Grid,
-    TextField,
-    Alert,
-    useThemeProps,
-} from "@mui/material";
+import { Box, Button, Grid, TextField, Alert } from "@mui/material";
 import React, { useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -123,7 +116,7 @@ const SignUpForm = ({ email, feeRecordFound, setFeeRecordFound }) => {
                                 onChange={handleChange}
                                 name="age"
                                 error={
-                                    !userEnteredInfo.age == "" &&
+                                    !userEnteredInfo.age === "" &&
                                     (userEnteredInfo.age < 18 ||
                                         userEnteredInfo.age > 65)
                                 }

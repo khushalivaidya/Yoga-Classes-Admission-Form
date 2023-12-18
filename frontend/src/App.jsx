@@ -1,8 +1,7 @@
 import "./App.css";
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import VerifyEmail from "./Components/VerifyEmail";
 import HomePage from "./Pages/HomePage";
-import backgroundImage from "./Images/20800062.jpg";
 
 const App = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -18,23 +17,12 @@ const App = () => {
     }, []);
 
     return (
-        <div
-            className="App"
-            style={
-                {
-                    // backgroundImage: `url(${backgroundImage})`,
-                    // backgroundSize,
-                    // backgroundPosition: top,
-                    // background: cover,
-                }
-            }
-        >
+        <div className="App">
             {!userInfo ? (
                 <VerifyEmail userInfo={userInfo} setUserInfo={setUserInfo} />
             ) : (
                 <HomePage userInfo={userInfo} setUserInfo={setUserInfo} />
             )}
-            {/* <HomePage userInfo={userInfo} setUserInfo={setUserInfo} /> */}
         </div>
     );
 };

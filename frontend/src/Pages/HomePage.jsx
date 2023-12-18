@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Alert, Box } from "@mui/material";
-import axios from "axios";
 import { getCurrentMonthFeesRecordByEmailApi } from "../utils/ApiRequests";
 import SignUpForm from "../Components/SignUpForm";
 import FeesRecordCard from "../Components/FeesRecordCard";
