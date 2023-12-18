@@ -5,7 +5,7 @@ const router = Router();
 
 router.post("/createFeesRecord", controller.createFeesRecord);
 
-router.get(
+router.post(
     "/getCurrentMonthFeesRecordByEmail",
     controller.getCurrentMonthFeesRecordByEmail
 );

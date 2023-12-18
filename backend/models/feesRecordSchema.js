@@ -15,9 +15,9 @@ const feesRecordSchema = new mongoose.Schema({
         validate: validator.isEmail,
     },
 
-    dateOfBirth: {
-        type: Date,
-        required: [true, "Date Of Birth is required"],
+    age: {
+        type: Number,
+        required: [true, "Age is required"],
     },
 
     batch: {

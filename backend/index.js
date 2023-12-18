@@ -34,8 +34,8 @@ app.get("/", (request, response) => {
     response.send("Hello World!");
 });
 
-app.use("api/otp", otpRouter);
-app.use("api/feesRecord", feeRecordRouter);
+app.use("/api/otp", otpRouter);
+app.use("/api/feesRecord", feeRecordRouter);
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);

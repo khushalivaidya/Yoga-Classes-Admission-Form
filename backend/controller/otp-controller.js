@@ -27,15 +27,14 @@ function clearOtp(key) {
 
 export const sendEmail = async (request, response) => {
     try {
-        const { email, name } = request.body;
-        const otp = request.otp;
+        const { email, otp } = request;
         let htmlTemplate = `
         <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
             <div style="margin:50px auto;width:70%;padding:20px 0">
                 <div style="border-bottom:1px solid #eee">
-                    <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">WalletWatch</a>
+                    <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Welcome to Yoga Sessions</a>
                 </div>
-                <p style="font-size:1.1em">Hi ${name},</p>
+                <p style="font-size:1.1em">Hello User,</p>
                 <p>Thank you for considering our Yoga sessions. Use the following OTP to complete your verification of your email. OTP is valid for 5 minutes</p>
                 <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${otp}</h2>
                 <p style="font-size:0.9em;">Regards,<br />WalletWatch</p>
@@ -74,7 +73,7 @@ export const sendEmail = async (request, response) => {
             console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         });
     } catch {
-        // console.log(error.message);
+        console.log(error.message);
         return response.status(500).json({
             success: false,
             message: error.message,
@@ -84,7 +83,7 @@ export const sendEmail = async (request, response) => {
 
 export const sendOtp = async (request, response) => {
     try {
-        const { email, name } = request.body;
+        const { email } = request.body;
 
         if (!email) {
             return response.status(400).json({
@@ -99,9 +98,7 @@ export const sendOtp = async (request, response) => {
         await sendEmail(
             {
                 email: email,
-                name: userName,
                 otp: otp,
-                useCase: useCase,
             },
             response
         );
@@ -115,7 +112,7 @@ export const sendOtp = async (request, response) => {
             otpInfo: obj,
             message: "OTP sent successfully",
         });
-    } catch {
+    } catch (err) {
         console.log(err.message);
         return response.status(500).json({
             success: false,

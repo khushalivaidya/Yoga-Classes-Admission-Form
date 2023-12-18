@@ -1,12 +1,11 @@
-// import FeesRecord from "../models/feesRecordSchema";
 import * as feeRecordService from "../services/feesRecord-service.js";
 // import moment from "moment";
 
 export const createFeesRecord = async (request, response) => {
     try {
-        const { email, name, dateOfBirth, batch } = request.body;
+        const { email, name, age, batch } = request.body;
 
-        if (!email || !name || !dateOfBirth || !batch) {
+        if (!email || !name || !age || !batch) {
             return response.status(400).json({
                 success: false,
                 message: "Please fill all the fields!",
@@ -15,10 +14,17 @@ export const createFeesRecord = async (request, response) => {
 
         const date = new Date();
         const month = date.getMonth();
+
+        if (!month) {
+            return response.status(400).json({
+                success: false,
+                message: "Cannot find month!",
+            });
+        }
         feeRecordService.createFeesRecord({
             name: name,
             email: email,
-            dateOfBirth: dateOfBirth,
+            age: age,
             batch: batch,
             paymentMonth: month,
         });
@@ -40,9 +46,13 @@ export const getCurrentMonthFeesRecordByEmail = async (request, response) => {
         const { email } = request.body;
         const date = new Date();
         const month = date.getMonth();
+        let query = {
+            email: email,
+            paymentMonth: month,
+        };
 
         const feesRecord = await feeRecordService.getFeesPaymentByEmailAndMonth(
-            { email, month }
+            query
         );
 
         return response.status(200).json({

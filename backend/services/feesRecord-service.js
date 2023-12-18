@@ -1,13 +1,13 @@
-import FeesRecord from "../models/feesRecordSchema";
+import FeesRecord from "../models/feesRecordSchema.js";
 
 export const createFeesRecord = async (request) => {
-    const { name, email, dateOfBirth, batch, paymentDate } = request;
+    const { name, email, age, batch, paymentMonth } = request;
     const newFeesRecord = await FeesRecord.create({
         name,
         email,
-        dateOfBirth,
+        age,
         batch,
-        paymentDate,
+        paymentMonth,
     });
 
     if (!newFeesRecord) return null;
