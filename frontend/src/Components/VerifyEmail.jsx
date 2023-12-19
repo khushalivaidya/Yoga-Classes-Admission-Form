@@ -50,7 +50,7 @@ const VerifyEmail = (props) => {
             }
         } catch (error) {
             setError(true);
-            setErrorMessage(error.response.data.message);
+            setErrorMessage(error.message);
         }
     };
 
@@ -86,7 +86,7 @@ const VerifyEmail = (props) => {
             setErrorMessage("");
         } catch (error) {
             setError(true);
-            setErrorMessage(error.response.data.message);
+            setErrorMessage(error.message);
         }
     };
 
