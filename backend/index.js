@@ -16,7 +16,7 @@ connectDB();
 
 const allowedOrigins = [
     "http://localhost:3000",
-    "yoga-classes-admission-form.vercel.app",
+    "https://yoga-classes-admission-form.vercel.app/",
 ];
 
 // Middleware
