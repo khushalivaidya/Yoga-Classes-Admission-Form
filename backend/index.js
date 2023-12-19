@@ -14,11 +14,16 @@ const port = process.env.PORT;
 
 connectDB();
 
+const allowedOrigins = [
+    "http://localhost:3000",
+    "yoga-classes-admission-form.vercel.app",
+];
+
 // Middleware
 app.use(express.json());
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: allowedOrigins,
         credentials: true,
         methods: ["GET", "POST", "PUT"],
     })
