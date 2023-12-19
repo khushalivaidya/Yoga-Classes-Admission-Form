@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://yoga-classes-admission-form-j9jj.onrender.com";
 
 export const sendOtpApi = `${baseUrl}/api/otp/sendOtp`;
 export const verifyOtpApi = `${baseUrl}/api/otp/verifyOtp`;
