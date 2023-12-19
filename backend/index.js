@@ -15,7 +15,7 @@ const port = process.env.PORT;
 connectDB();
 
 const allowedOrigins = [
-    "http://localhost:3000",
+    // "http://localhost:3000",
     "https://yoga-classes-admission-form.vercel.app/",
 ];
 
