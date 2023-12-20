@@ -2,8 +2,6 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import helmet from "helmet";
-import morgan from "morgan";
 import { connectDB } from "./DB/Database.js";
 import otpRouter from "./router/otp-router.js";
 import feeRecordRouter from "./router/feeRecord-router.js";
@@ -12,37 +10,16 @@ dotenv.config({ path: "./config/config.env" });
 const app = express();
 const port = process.env.PORT;
 
-connectDB();
-
-const allowedOrigins = [
-    // "http://localhost:3000",
-    "https://yoga-classes-admission-form.vercel.app/",
-];
-
 // Middleware
 app.use(express.json());
 app.use(
     cors({
-        origin: allowedOrigins,
+        origin: process.env.FRONTEND_URL,
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE"],
     })
 );
 
-app.use(function (req, res, next) {
-    //Enabling CORS
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization"
-    );
-    next();
-});
-
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -54,5 +31,6 @@ app.use("/api/otp", otpRouter);
 app.use("/api/feesRecord", feeRecordRouter);
 
 app.listen(port, () => {
+    connectDB();
     console.log(`Server running on http://localhost:${port}`);
 });
