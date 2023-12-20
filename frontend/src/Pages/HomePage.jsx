@@ -52,7 +52,6 @@ const HomePage = (props) => {
                     }
                 });
         } catch (error) {
-            console.log(error.message);
             setIsError(true);
             setErrorMessage(error.message);
         }

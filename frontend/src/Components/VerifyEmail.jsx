@@ -38,8 +38,6 @@ const VerifyEmail = (props) => {
                 email: userEnteredInfo.email,
             });
 
-            console.log(response.data, response.status);
-
             if (response.data.success) {
                 setIsOtpSentToUser(true);
                 setError(false);
@@ -63,8 +61,6 @@ const VerifyEmail = (props) => {
                 email: userEnteredInfo.email,
                 otp: userEnteredInfo.otp,
             });
-
-            console.log(response.data, response.status);
 
             if (response.data.success) {
                 setDisplayIncorrectOTP(false);
