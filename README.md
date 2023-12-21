@@ -37,6 +37,9 @@ If you are using gmail, enable 2 Step Verification
 -   `MONGO_URL` : Your MongoDB connection string
 -   `PORT` : Port number
 
+#### Allowed Origins
+- `FRONTEND_URL` : Your localhost or Deployed frontend link
+
 ## Run Locally
 
 Clone the project
